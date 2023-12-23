@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Home Page"
+title: "Hi there, I'm Gregory Santosa"
 excerpt: "About me"
 author_profile: true
 redirect_from: 
