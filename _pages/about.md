@@ -8,9 +8,4 @@ redirect_from:
   - /about.html
 ---
 
-I am a software engineer and Computer Scientist from the Bay Area. 
-Currently, I am working as a Computer Scientist with [Naval Air Systems Command](https://www.navair.navy.mil/) in Southern California.
-
-
-
-This is the front page of a website that is powered by the [academicpages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages. [GitHub pages](https://pages.github.com) is a free service in which websites are built and hosted from code and data stored in a GitHub repository, automatically updating when a new commit is made to the respository. This template was forked from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/) created by Michael Rose, and then extended to support the kinds of content that academics have: publications, talks, teaching, a portfolio, blog posts, and a dynamically-generated CV. You can fork [this repository](https://github.com/academicpages/academicpages.github.io) right now, modify the configuration and markdown files, add your own PDFs and other content, and have your own site for free, with no ads! An older version of this template powers my own personal website at [stuartgeiger.com](http://stuartgeiger.com), which uses [this Github repository](https://github.com/staeiou/staeiou.github.io).
+I am a software engineer and Computer Scientist from the Bay Area. I graduated with a degree in Computer Science from the University of California Santa Cruz, and I am currently working as a Computer Scientist with [Naval Air Systems Command](https://www.navair.navy.mil/) in Southern California. My experiences coding have mostly been focused on Computer Systems, Databases, and Artificial Intelligence. I believe that Software has the capability to positively impact lives and change the world. If you would like to leanr more about me, click on another link on the left or top of the page.
