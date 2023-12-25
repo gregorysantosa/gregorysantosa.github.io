@@ -8,9 +8,9 @@ redirect_from:
   - /about.html
 ---
 
-I am a software engineer and Computer Scientist from the Bay Area.
+## I am a software engineer and Computer Scientist from the Bay Area.
 
-Currently, I am working as a Computer Scientist with [Naval Air Systems Command](https://www.navair.navy.mil/) in Southern California.
+## Currently, I am working as a Computer Scientist with [Naval Air Systems Command](https://www.navair.navy.mil/) in Southern California.
 
 
 
