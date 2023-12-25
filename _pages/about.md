@@ -16,4 +16,4 @@ I am a software engineer and Computer Scientist from the Bay Area. I graduated w
 -  I have practiced Martial Arts for over a decade and hold a 3rd Degree Black Belt in Taekwondo
 -  I love playing video games, some of my favorites include Hades and League of Legends.
 
-
+If you would like to learn more about me, click on any of the links on the page!
