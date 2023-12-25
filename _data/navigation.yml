@@ -5,16 +5,10 @@ main:
     url: /experiences/    
 
   - title: "Education"
-    url: /teaching/    
+    url: /education/    
     
-  - title: "Projects"
+  - title: "Portfolio"
     url: /portfolio/
         
   - title: "Blog Posts"
     url: /year-archive/
-    
-  - title: "CV"
-    url: /cv/
-    
-  - title: "Guide"
-    url: /markdown/
