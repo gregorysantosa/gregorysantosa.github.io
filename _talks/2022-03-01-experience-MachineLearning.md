@@ -4,7 +4,7 @@ collection: talks
 type: "Research"
 permalink: /experiences/MachineLearningResearch
 venue: "Santa Cruz Institute for Particle Physics"
-date: 2022-03-01
+date: 2021-03-06
 location: "Santa Cruz, California"
 ---
 

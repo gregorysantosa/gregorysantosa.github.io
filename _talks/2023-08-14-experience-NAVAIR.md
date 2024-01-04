@@ -4,7 +4,7 @@ collection: talks
 type: "Full-time"
 permalink: /experiences/Navair
 venue: "Naval Air Systems Command"
-date: 2022-03-01
+date: 2023-08-14
 location: "Point Mugu, California"
 ---
 
