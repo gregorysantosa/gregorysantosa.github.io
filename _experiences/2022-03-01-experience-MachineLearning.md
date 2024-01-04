@@ -1,7 +1,7 @@
 ---
 title: "Machine Learning Researcher"
 collection: talks
-type: "Research"
+type: "Talk"
 permalink: /experiences/MachineLearningResearch
 venue: "Santa Cruz Institute for Particle Physics"
 date: 2022-03-01
