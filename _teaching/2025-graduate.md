@@ -8,7 +8,10 @@ date: 2024-08-01
 location: "Los Angeles, California"
 ---
 
-Began graduate studies on August 2024. Expected graduation date May 2026.
+Began graduate studies on August 2024. Exp. Graduation May 2026.
 
 Coursework:
--  Placeholder
+- Analysis of Algorithms
+- Web Technologies
+- Information Retrieval and Web Search Engines
+- Database Systems
