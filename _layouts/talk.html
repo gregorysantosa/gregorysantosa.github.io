@@ -34,11 +34,11 @@ layout: default
   <p class="page__date">
     <strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i>Dates:</strong>
     <time datetime="{{ page.start_date | date_to_xmlschema }}">{{ page.start_date | date: "%B %Y" }}</time> – 
-{% if page.end_date and page.end_date | strip == "9999-12-31" %}
-  Present
-{% else %}
-  <time datetime="{{ page.end_date | date_to_xmlschema }}">{{ page.end_date | date: "%B %Y" }}</time>
-{% endif %}
+    {% if page.end_date == "Present" %}
+      Present
+    {% else %}
+      <time datetime="{{ page.end_date | date_to_xmlschema }}">{{ page.end_date | date: "%B %Y" }}</time>
+    {% endif %}
   </p>
 {% elsif page.start_date %}
   <p class="page__date">
