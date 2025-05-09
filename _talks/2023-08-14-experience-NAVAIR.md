@@ -5,7 +5,7 @@ type: "Full-time"
 permalink: /experiences/Navair
 venue: "Naval Air Systems Command"
 start_date: 2023-08-14
-end_date: Present
+end_date: 9999-12-31
 location: "Point Mugu, California"
 ---
 
