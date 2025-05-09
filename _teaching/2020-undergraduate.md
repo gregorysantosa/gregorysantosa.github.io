@@ -8,11 +8,15 @@ date: 2023-06-01
 location: "Santa Cruz, California"
 ---
 
-Attended from June 2020 to June 2023.
+Completed a rigorous 4-year Computerr Science Program in 3 years with coursework spanning AI, web development, and low-level systems engineering. Developing strong foundations in machine learning, full-stack development, and systems architecture through coursework and research projects.
 
 Coursework:
--  Artificial Intelligence
--  Web Development
--  Database Systems
--  Models and Algorithms
--  Computer Systems Design
+-  Computer Systems and C Programming
+-  Vector Calculus
+-  Linear Algebra
+-  Applied Discrete Mathematics
+-  Data Structures and Algorithms
+-  Computer Architecture
+-  Applied Machine Learning
+-  Full Stack Web Development
+-  Computer Graphics
