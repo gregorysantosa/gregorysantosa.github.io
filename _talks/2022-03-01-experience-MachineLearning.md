@@ -5,6 +5,7 @@ type: "Research"
 permalink: /experiences/MachineLearningResearch
 venue: "Santa Cruz Institute for Particle Physics"
 start_date: 2021-03-06
+end_date: 2021-06-05
 location: "Santa Cruz, California"
 ---
 
