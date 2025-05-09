@@ -4,7 +4,7 @@ collection: talks
 type: "Teaching Assistant"
 permalink: /experiences/ComputerSystemsReader
 venue: "University of California, Santa Cruz"
-date: 2022-03-01
+start_date: 2022-03-01
 location: "Santa Cruz, California"
 ---
 
