@@ -9,4 +9,6 @@ end_date: 2022-06-01
 location: "Santa Cruz, California"
 ---
 
--  Assisted 200 student class with curriculum development, grading exams, and papers, while providing constructive feedback
+-  Collaborated with faculty to update course materials, lecture slides, and practical exercises based on the latest trends in computer systems.
+-  Marked assessments, projects, and examinations, ensuring alignment with learning outcomes and academic standards.
+-  Participated in departmental meetings, exam boards, and quality assurance activities 

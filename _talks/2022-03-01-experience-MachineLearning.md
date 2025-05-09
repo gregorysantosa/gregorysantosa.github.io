@@ -9,6 +9,6 @@ end_date: 2021-06-05
 location: "Santa Cruz, California"
 ---
 
--  Analyzed and processed particle collisions from CERN to identify Higgs Boson collisions
--  Responsible for creating an ML Model Prototype given data gathered from CERN Scientists
--  Identified multiple methods of Model Construction and analyzed results
+-  Developed and optimized machine learning pipelines for signal-background discrimination in Higgs boson using large-scale datasets from the CERN experiment.
+-  Applied supervised learning techniques to enhance event classification accuracy in proton-proton collision data.
+-  Utilized NumPy, and pandas for data preprocessing, statistical analysis, and visualization of event-level characteristics and model outputs.
