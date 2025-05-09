@@ -33,22 +33,22 @@ layout: default
 {% if page.start_date and page.end_date %}
   <p class="page__date">
     <strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i>Dates:</strong>
-    <time datetime="{{ page.start_date | date_to_xmlschema }}">{{ page.start_date | date: "%B %Y" }}123</time> – 
+    <time datetime="{{ page.start_date | date_to_xmlschema }}">{{ page.start_date | date: "%B %Y" }}</time> – 
     {% if page.end_date == "9999-12-31" %}
       Present
     {% else %}
-      <time datetime="{{ page.end_date | date_to_xmlschema }}">{{ page.end_date | date: "%B %Y" }}asdsadasd</time>
+      <time datetime="{{ page.end_date | date_to_xmlschema }}">{{ page.end_date | date: "%B %Y" }}</time>
     {% endif %}
   </p>
 {% elsif page.start_date %}
   <p class="page__date">
     <strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i>Start Date:</strong>
-    <time datetime="{{ page.start_date | date_to_xmlschema }}">{{ page.start_date | date: "%B %Y" }}321</time>
+    <time datetime="{{ page.start_date | date_to_xmlschema }}">{{ page.start_date | date: "%B %Y" }}</time>
   </p>
 {% elsif page.date %}
   <p class="page__date">
     <strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i>Date:</strong>
-    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}444</time>
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
   </p>
 {% endif %}
 {% if page.talk_type %}
