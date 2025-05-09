@@ -47,7 +47,10 @@ layout: default
     <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
   </p>
 {% endif %}
-        {% if page.talk_type %}<p>{{page.talk_type}} at {{ page.venue }},  {{page.location}} {% endif %}
+{% if page.talk_type %}
+  <p>{{ page.talk_type }} at {{ page.venue }}, {{ page.location }}</p>
+{% endif %}
+
 
         </header>
       {% endunless %}
