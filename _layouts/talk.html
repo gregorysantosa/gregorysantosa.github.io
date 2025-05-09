@@ -33,7 +33,7 @@ layout: default
 {% if page.start_date and page.end_date %}
   <p class="page__date">
     <strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i>Dates:</strong>
-    <time datetime="{{ page.start_date | date_to_xmlschema }}">{{ page.start_date | date: "%B %Y" }}</time> – 
+    <time datetime="{{ page.start_date | date_to_xmlschema }}">{{ page.start_date | date: "%B %Y" }}123</time> – 
     {% if page.end_date == "9999-12-31" %}
       Present
     {% else %}
@@ -43,12 +43,12 @@ layout: default
 {% elsif page.start_date %}
   <p class="page__date">
     <strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i>Start Date:</strong>
-    <time datetime="{{ page.start_date | date_to_xmlschema }}">{{ page.start_date | date: "%B %Y" }}</time>
+    <time datetime="{{ page.start_date | date_to_xmlschema }}">{{ page.start_date | date: "%B %Y" }}321</time>
   </p>
 {% elsif page.date %}
   <p class="page__date">
     <strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i>Date:</strong>
-    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}444</time>
   </p>
 {% endif %}
 {% if page.talk_type %}
