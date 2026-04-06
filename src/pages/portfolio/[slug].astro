@@ -1,0 +1,45 @@
+---
+import { getCollection } from "astro:content";
+import SiteLayout from "../../components/SiteLayout.astro";
+import AuthorCard from "../../components/AuthorCard.astro";
+
+export async function getStaticPaths() {
+  const items = await getCollection("portfolio");
+  return items.map((item) => ({
+    params: { slug: item.data.urlPath },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+const { Content } = await item.render();
+---
+
+<SiteLayout
+  title={item.data.title}
+  backLink={{ label: "Portfolio", href: "/portfolio/" }}
+>
+  <AuthorCard slot="sidebar" />
+  <article class="doc doc-panel">
+    <header class="doc__head">
+      <h1 class="doc__title">{item.data.title}</h1>
+    </header>
+    <div class="prose doc__body">
+      <Content />
+    </div>
+  </article>
+</SiteLayout>
+
+<style>
+  .doc__head {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .doc__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.1rem);
+    font-weight: 600;
+    margin: 0;
+  }
+</style>

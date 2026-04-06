@@ -1,0 +1,131 @@
+---
+import SiteLayout from "../components/SiteLayout.astro";
+import AuthorCard from "../components/AuthorCard.astro";
+import { site } from "../site.config";
+---
+
+<SiteLayout title={site.title} description={site.description}>
+  <AuthorCard slot="sidebar" />
+  <div class="hero">
+    <p class="hero__eyebrow">Software engineer</p>
+    <h1 class="hero__title">Hi, I'm Gregory Santosa</h1>
+    <p class="hero__lead">
+      Mission-critical systems, full-stack development, and a steady appetite for learning.
+    </p>
+    <nav class="hero__chips" aria-label="Quick links">
+      <a class="hero__chip motion-safe-transition" href="/experiences/">Experience</a>
+      <a class="hero__chip motion-safe-transition" href="/portfolio/">Portfolio</a>
+      <a class="hero__chip motion-safe-transition" href="/year-archive/">Blog</a>
+    </nav>
+  </div>
+  <div class="prose prose--home">
+    <p>
+      A dedicated and detail-oriented software engineer, I earned my undergraduate
+      degree in Computer Science from the University of California, Santa Cruz
+      (UCSC), and am currently pursuing my graduate studies at the University of
+      Southern California (USC). I have been working at the Naval Air Systems
+      Command (NAVAIR) for two years, starting as a full-time employee and
+      transitioning to a part-time role as I pursue my graduate studies. There, I
+      contribute to mission-critical software solutions to support the fleet. With a
+      strong foundation in software development and a passion for solving complex
+      technical challenges, I aim to change the world with the real-world
+      experience and academic knowledge my experiences have given me.
+    </p>
+
+    <h2>Quick facts</h2>
+    <ul>
+      <li>
+        I love fantasy novels—favorites include the
+        <a
+          href="https://www.goodreads.com/book/show/186074.The_Name_of_the_Wind?from_search=true&from_srp=true&qid=8ESOvDC6zM&rank=1"
+          >Kingkiller Chronicle</a
+        >
+        and
+        <a
+          href="https://www.goodreads.com/book/show/42844155-harry-potter-and-the-sorcerer-s-stone?ref=nav_sb_ss_1_12"
+          >Harry Potter</a
+        > series.
+      </li>
+      <li>
+        I have practiced martial arts for more than 13 years and hold a 3rd degree
+        black belt in Taekwondo.
+      </li>
+      <li>
+        I enjoy video games—recent favorites include Hades and League of Legends.
+      </li>
+    </ul>
+
+    <p>
+      To learn more about my work experience or projects, use the navigation above.
+    </p>
+  </div>
+</SiteLayout>
+
+<style>
+  .hero {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero__eyebrow {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 0.65rem;
+  }
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.1rem, 4.5vw, 2.85rem);
+    font-weight: 600;
+    line-height: 1.12;
+    margin: 0 0 0.85rem;
+    letter-spacing: -0.035em;
+    background: linear-gradient(
+      120deg,
+      var(--text) 0%,
+      var(--text) 46%,
+      var(--accent) 120%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  @supports not (background-clip: text) {
+    .hero__title {
+      color: var(--text);
+      background: none;
+    }
+  }
+  .hero__lead {
+    margin: 0 0 1.25rem;
+    font-size: 1.08rem;
+    color: var(--text-muted);
+    max-width: 38ch;
+    line-height: 1.55;
+  }
+  .hero__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .hero__chip {
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 0.4rem 0.95rem;
+    border-radius: 999px;
+    text-decoration: none;
+    color: var(--accent);
+    border: 1px solid var(--border);
+    background: var(--bg-elevated);
+    box-shadow: 0 1px 2px rgba(12, 18, 34, 0.04);
+  }
+  .hero__chip:hover {
+    border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+    background: var(--accent-soft);
+  }
+  .prose--home {
+    max-width: var(--content-max);
+  }
+</style>

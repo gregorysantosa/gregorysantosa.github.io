@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content";
+import SiteLayout from "../../components/SiteLayout.astro";
+import AuthorCard from "../../components/AuthorCard.astro";
+import ContentCard from "../../components/ContentCard.astro";
+import { formatExperienceRange } from "../../lib/format";
+
+const talks = (await getCollection("talks")).sort(
+  (a, b) => b.data.startDate.getTime() - a.data.startDate.getTime(),
+);
+---
+
+<SiteLayout title="Experiences">
+  <AuthorCard slot="sidebar" />
+  <header class="page-intro">
+    <p class="page-intro__eyebrow">Career</p>
+    <h1 class="page-intro__title">Experience</h1>
+    <p class="page-intro__desc">
+      Roles and research across industry and academia.
+    </p>
+  </header>
+  <div class="list-panel">
+    <div class="list">
+      {
+        talks.map((item) => (
+          <ContentCard
+            href={`/experiences/${item.data.urlPath}/`}
+            title={item.data.title}
+            subtitle={`${item.data.type} · ${item.data.venue} · ${formatExperienceRange(item.data.startDate, item.data.endDate)}`}
+          />
+        ))
+      }
+    </div>
+  </div>
+</SiteLayout>

@@ -1,0 +1,299 @@
+---
+import "../styles/global.css";
+import { site, nav, author } from "../site.config";
+import { isNavActive } from "../lib/navActive";
+
+interface Props {
+  title: string;
+  description?: string;
+  backLink?: { label: string; href: string };
+}
+
+const { title, description = site.description, backLink } = Astro.props;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+const pathname = Astro.url.pathname;
+
+const navLinks = nav.map((item) => ({
+  ...item,
+  active: isNavActive(pathname, item.href),
+}));
+---
+
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0d6e6e" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/images/site-logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title === site.title ? title : `${title} · ${site.title}`}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-logo motion-safe-transition" href="/">
+          <span class="site-logo__mark" aria-hidden="true"></span>
+          {site.title}
+        </a>
+
+        <nav class="site-nav site-nav--desktop" aria-label="Primary">
+          <ul>
+            {
+              navLinks.map((item) => (
+                <li>
+                  <a
+                    class:list={["site-nav__link", "motion-safe-transition", { "is-active": item.active }]}
+                    href={item.href}
+                    aria-current={item.active ? "page" : undefined}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+
+        <details class="site-nav-mobile">
+          <summary class="site-nav-mobile__summary motion-safe-transition">Menu</summary>
+          <nav class="site-nav-mobile__panel" aria-label="Primary mobile">
+            <ul>
+              {
+                navLinks.map((item) => (
+                  <li>
+                    <a
+                      class:list={["site-nav-mobile__link", { "is-active": item.active }]}
+                      href={item.href}
+                      aria-current={item.active ? "page" : undefined}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
+        </details>
+      </div>
+    </header>
+
+    <div class:list={["page-shell", { "page-shell--with-sidebar": Astro.slots.has("sidebar") }]}>
+      <main id="main" class="page-main">
+        {
+          backLink && (
+            <a class="back-link motion-safe-transition" href={backLink.href}>
+              <span aria-hidden="true">←</span> {backLink.label}
+            </a>
+          )
+        }
+        <slot />
+      </main>
+      {
+        Astro.slots.has("sidebar") && (
+          <aside class="page-sidebar" aria-label="About the author">
+            <slot name="sidebar" />
+          </aside>
+        )
+      }
+    </div>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p class="site-footer__copy">
+          © {new Date().getFullYear()}
+          {author.name}
+        </p>
+        <p class="site-footer__meta">
+          <a href="https://pages.github.com/">GitHub Pages</a>
+          ·
+          <a href={`https://github.com/${author.github}/${author.github}.github.io`}>Source</a>
+        </p>
+      </div>
+    </footer>
+
+    <style>
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(14px) saturate(1.2);
+        background: color-mix(in srgb, var(--bg) 82%, transparent);
+        border-bottom: 1px solid var(--border);
+      }
+      .site-header__inner {
+        max-width: var(--layout-max);
+        margin: 0 auto;
+        padding: 0.65rem 1.25rem;
+        min-height: var(--header-h);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      .site-logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        font-family: var(--font-display);
+        font-size: 1.22rem;
+        font-weight: 600;
+        color: var(--text);
+        text-decoration: none;
+        letter-spacing: -0.02em;
+      }
+      .site-logo:hover {
+        color: var(--accent);
+      }
+      .site-logo__mark {
+        width: 6px;
+        height: 1.35rem;
+        border-radius: 3px;
+        background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 45%, var(--text-muted)));
+      }
+      .site-nav--desktop ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem 0.2rem;
+        align-items: center;
+      }
+      .site-nav__link {
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        text-decoration: none;
+        padding: 0.45rem 0.7rem;
+        border-radius: 999px;
+      }
+      .site-nav__link:hover {
+        color: var(--accent);
+        background: var(--accent-soft);
+      }
+      .site-nav__link.is-active {
+        color: var(--accent);
+        background: var(--accent-soft);
+      }
+      .site-nav-mobile {
+        display: none;
+        position: relative;
+      }
+      .site-nav-mobile__summary {
+        list-style: none;
+        cursor: pointer;
+        font-family: var(--font-sans);
+        font-size: 0.88rem;
+        font-weight: 700;
+        padding: 0.5rem 0.95rem;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: var(--bg-elevated);
+        color: var(--text);
+      }
+      .site-nav-mobile__summary::-webkit-details-marker {
+        display: none;
+      }
+      .site-nav-mobile[open] .site-nav-mobile__summary {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .site-nav-mobile__panel {
+        position: absolute;
+        right: 0;
+        top: calc(100% + 0.45rem);
+        min-width: 12rem;
+        padding: 0.5rem;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-hover);
+      }
+      .site-nav-mobile__panel ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .site-nav-mobile__link {
+        display: block;
+        padding: 0.55rem 0.75rem;
+        border-radius: var(--radius-sm);
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        text-decoration: none;
+      }
+      .site-nav-mobile__link:hover,
+      .site-nav-mobile__link.is-active {
+        color: var(--accent);
+        background: var(--accent-soft);
+      }
+      @media (max-width: 767px) {
+        .site-nav--desktop {
+          display: none;
+        }
+        .site-nav-mobile {
+          display: block;
+        }
+      }
+      .page-shell {
+        max-width: var(--layout-max);
+        margin: 0 auto;
+        padding: 2.25rem 1.25rem 3.75rem;
+      }
+      .page-shell--with-sidebar {
+        display: grid;
+        gap: 2rem;
+      }
+      .page-main {
+        min-width: 0;
+      }
+      @media (min-width: 880px) {
+        .page-shell--with-sidebar {
+          grid-template-columns: minmax(0, 1fr) 288px;
+          align-items: start;
+        }
+        .page-sidebar {
+          position: sticky;
+          top: calc(var(--header-h) + 1rem);
+        }
+      }
+      .site-footer {
+        border-top: 1px solid var(--border);
+        padding: 2rem 1.25rem;
+        background: color-mix(in srgb, var(--bg-elevated) 35%, transparent);
+      }
+      .site-footer__inner {
+        max-width: var(--layout-max);
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.35rem;
+        text-align: center;
+        font-size: 0.88rem;
+        color: var(--text-muted);
+      }
+      .site-footer__copy {
+        margin: 0;
+        font-weight: 600;
+        color: var(--text);
+      }
+      .site-footer__meta {
+        margin: 0;
+      }
+      .site-footer__meta a {
+        font-weight: 600;
+      }
+    </style>
+  </body>
+</html>

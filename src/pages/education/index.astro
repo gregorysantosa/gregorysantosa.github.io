@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+import SiteLayout from "../../components/SiteLayout.astro";
+import AuthorCard from "../../components/AuthorCard.astro";
+import ContentCard from "../../components/ContentCard.astro";
+import { formatMonthYear } from "../../lib/format";
+
+const items = (await getCollection("teaching")).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+---
+
+<SiteLayout title="Education">
+  <AuthorCard slot="sidebar" />
+  <header class="page-intro">
+    <p class="page-intro__eyebrow">Academics</p>
+    <h1 class="page-intro__title">Education</h1>
+    <p class="page-intro__desc">Degrees and coursework.</p>
+  </header>
+  <div class="list-panel">
+    <div class="list">
+      {
+        items.map((item) => (
+          <ContentCard
+            href={`/education/${item.data.urlPath}/`}
+            title={item.data.title}
+            subtitle={`${item.data.type} · ${formatMonthYear(item.data.date)} · ${item.data.location}`}
+          />
+        ))
+      }
+    </div>
+  </div>
+</SiteLayout>

@@ -1,0 +1,100 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  subtitle?: string;
+  excerpt?: string;
+}
+
+const { href, title, subtitle, excerpt } = Astro.props;
+---
+
+<article class="content-card motion-safe-transition">
+  <a class="content-card__link" href={href}>
+    <span class="content-card__body">
+      <h2 class="content-card__title">{title}</h2>
+      {subtitle && <p class="content-card__subtitle">{subtitle}</p>}
+      {
+        excerpt && (
+          <div class="content-card__excerpt" set:html={excerpt} />
+        )
+      }
+    </span>
+    <span class="content-card__chevron" aria-hidden="true">→</span>
+  </a>
+</article>
+
+<style>
+  .content-card {
+    border-bottom: 1px solid var(--border);
+  }
+  .content-card:last-child {
+    border-bottom: none;
+  }
+  .content-card__link {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.15rem 0.35rem;
+    margin: 0 -0.35rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: inherit;
+  }
+  .content-card__link:hover {
+    background: var(--accent-soft);
+  }
+  .content-card__body {
+    min-width: 0;
+  }
+  .content-card__title {
+    font-family: var(--font-display);
+    font-size: 1.28rem;
+    font-weight: 600;
+    margin: 0 0 0.35rem;
+    line-height: 1.22;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+  .content-card__link:hover .content-card__title {
+    color: var(--accent);
+  }
+  .content-card__subtitle {
+    margin: 0 0 0.45rem;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+  }
+  .content-card__excerpt {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .content-card__excerpt :global(img) {
+    margin-top: 0.65rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+  }
+  .content-card__chevron {
+    flex-shrink: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .content-card__chevron {
+      transition: none;
+    }
+  }
+  .content-card__link:hover .content-card__chevron {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>

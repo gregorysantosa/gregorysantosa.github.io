@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+import SiteLayout from "../../components/SiteLayout.astro";
+import AuthorCard from "../../components/AuthorCard.astro";
+import ContentCard from "../../components/ContentCard.astro";
+
+const items = await getCollection("portfolio");
+---
+
+<SiteLayout title="Portfolio">
+  <AuthorCard slot="sidebar" />
+  <header class="page-intro">
+    <p class="page-intro__eyebrow">Projects</p>
+    <h1 class="page-intro__title">Portfolio</h1>
+    <p class="page-intro__desc">
+      Selected projects with demos and screenshots.
+    </p>
+  </header>
+  <div class="list-panel">
+    <div class="list">
+      {
+        items.map((item) => (
+          <ContentCard
+            href={`/portfolio/${item.data.urlPath}/`}
+            title={item.data.title}
+            excerpt={item.data.excerpt}
+          />
+        ))
+      }
+    </div>
+  </div>
+</SiteLayout>

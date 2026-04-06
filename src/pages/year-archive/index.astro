@@ -1,0 +1,61 @@
+---
+import { getCollection } from "astro:content";
+import SiteLayout from "../../components/SiteLayout.astro";
+import AuthorCard from "../../components/AuthorCard.astro";
+import ContentCard from "../../components/ContentCard.astro";
+import { formatLongDate } from "../../lib/format";
+
+const posts = (await getCollection("posts")).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+
+const byYear = new Map<number, typeof posts>();
+for (const post of posts) {
+  const y = post.data.date.getFullYear();
+  const list = byYear.get(y) ?? [];
+  list.push(post);
+  byYear.set(y, list);
+}
+const years = [...byYear.keys()].sort((a, b) => b - a);
+---
+
+<SiteLayout title="Blog posts">
+  <AuthorCard slot="sidebar" />
+  <header class="page-intro">
+    <p class="page-intro__eyebrow">Writing</p>
+    <h1 class="page-intro__title">Blog posts</h1>
+    <p class="page-intro__desc">Updates and longer notes by year.</p>
+  </header>
+  {
+    years.map((year) => (
+      <section class="year-block">
+        <h2 class="year-block__title">{year}</h2>
+        <div class="list-panel">
+          <div class="list">
+            {byYear.get(year)!.map((post) => (
+              <ContentCard
+                href={`/posts/${post.data.urlPath}/`}
+                title={post.data.title}
+                subtitle={formatLongDate(post.data.date)}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+</SiteLayout>
+
+<style>
+  .year-block {
+    margin-bottom: 1.75rem;
+  }
+  .year-block__title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 0 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: -0.02em;
+  }
+</style>
